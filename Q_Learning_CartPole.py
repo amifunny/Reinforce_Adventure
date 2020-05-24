@@ -121,7 +121,7 @@ for ep in range(total_eps):
 	model.fit( input_batch , target_batch )
 
 
-# Save as pickle
+# Save with pickle
 ql_results = open('results','wb')
 pickle.dump( ep_reward_list , ql_results )                      
 
