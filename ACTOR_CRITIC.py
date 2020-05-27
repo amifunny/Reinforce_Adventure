@@ -46,7 +46,6 @@ optimizer = tf.keras.optimizers.Adam( 0.001 )
 
 total_eps = 800
 GAMMA = 0.99
-avg_reward = 0
 
 ep_reward_list = []
 running_reward = 0
@@ -58,6 +57,8 @@ for ep in range(total_eps):
 
 	actor_losses = []
 	critic_losses = []
+
+	avg_reward = 0
 
 	while True:
 
@@ -72,15 +73,15 @@ for ep in range(total_eps):
 
 			tf_state = tf.expand_dims( tf.convert_to_tensor( state ) , 0 )
 
-			# td_error = reward - avg_reward + critic_model( tf_state ) - critic_model( tf_prev_state )
-			# avg_reward = avg_reward + td_error*0.01
+			td_error = reward - avg_reward + critic_model( tf_state )
+			avg_reward = avg_reward + td_error*0.01
 
-			if done:
-				target = reward + GAMMA*critic_model(tf_state)
-			else:
-				target = reward
+			# if done:
+			# 	target = reward + GAMMA*critic_model(tf_state)
+			# else:
+			# 	target = reward
 				
-			td_error = target - critic_model(tf_prev_state)
+			# td_error = target - critic_model(tf_prev_state)
 
 			log_prob = tf.math.log(  act_prob )
 
@@ -89,7 +90,7 @@ for ep in range(total_eps):
 
 			critic_losses.append( critic_loss )
 			actor_losses.append( actor_loss )
-		
+			
 			
 			episodic_r += reward
 
