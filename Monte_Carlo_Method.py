@@ -92,7 +92,6 @@ for ep in range(total_eps):
 		# this is usual Monte Carlo ie taking average of reward as target
 		# *** targets[action] = episodic_reward/ep_step
 
-		# But i discovered this better trick , i don't what is this called in literature
 		# We step wise assign reward 
 		# Example.  first q(s,a) to be best = episodic_reward
 		# and last as q(s,a) = 0 as this was a wrong action leading to termination
