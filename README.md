@@ -19,7 +19,7 @@ Repository contains code for -
 -	[Q-Learning with Neural Net](https://github.com/amifunny/Reinforce_Adventure/blob/master/Q_Learning_CartPole.py)
 -	[Vanilla Policy Gradient](https://github.com/amifunny/Reinforce_Adventure/blob/master/Vanilla_policy_Gradient.py)
 
-![GIF for Cartpole](cartpole.gif)
+![GIF for Cartpole](gifs/cartpole.gif)
 
 ## Lunar Lander
 
